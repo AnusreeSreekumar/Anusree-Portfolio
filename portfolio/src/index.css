@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F8F1E5;
+  --color-darkbrown: #2B1A10;
+  --color-orange: #F26B1D;
+  --color-amber: #F9A03F;
+  --color-peach: #FAD9A6;
+  --color-muted: #6B5848;
+  --color-darkbg: #1B110A;
+  --color-darkcard: #3A271A;
+
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-handwriting: "Caveat", cursive;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F8F1E5;
+    color: #2B1A10;
+    overflow-x: hidden;
+  }
+}
+
+/* Marquee continuous loop & pause on hover */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 26s linear infinite;
+}
+
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation-duration: 52s;
+  }
+}
