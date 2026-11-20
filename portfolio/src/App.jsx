@@ -70,7 +70,7 @@ export const SITE_DATA = {
     badgeText: '• BACKEND & BLOCKCHAIN DEVELOPER • ',
     quoteText:
       'Brings deep quality thinking into every development role — ensuring robust, reliable, well-tested software.',
-    portraitSrc: '/images/anusree-hero.svg',
+    portraitSrc: '/images/portrait.jpg',
     portraitAlt:
       'Portrait of Anusree KS, Backend, Blockchain, and Full-Stack Developer from Thiruvananthapuram',
     skillPills: [
@@ -172,7 +172,7 @@ export const SITE_DATA = {
     ctaLabel: 'Download CV',
     experienceValue: '12+',
     experienceLabel: 'Years QA & 2+ Yrs Dev',
-    portraitSrc: '/images/anusree-about.svg',
+    portraitSrc: '/images/portrait.jpg',
     portraitAlt:
       'Anusree KS — Distributed Systems, Full-Stack MERN, and Blockchain Developer',
     pills: [
@@ -1125,9 +1125,13 @@ export default function App() {
                 {/* Stylized Developer Portrait on Organic Peach Blobs */}
                 <div className="relative mx-auto w-full max-w-[350px] sm:max-w-[390px]">
                   <img
-                    src={HERO_PORTRAIT_DATA_URI}
+                    src={SITE_DATA.hero.portraitSrc || HERO_PORTRAIT_DATA_URI}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = HERO_PORTRAIT_DATA_URI;
+                    }}
                     alt={SITE_DATA.hero.portraitAlt}
-                    className="h-auto w-full drop-shadow-sm select-none"
+                    className="h-auto w-full rounded-[22px] object-cover drop-shadow-sm select-none"
                   />
                 </div>
 
@@ -1395,7 +1399,11 @@ export default function App() {
                 {/* Portrait Card */}
                 <div className="relative overflow-hidden rounded-[22px] border-4 border-[#3A271A] bg-[#FAD9A6] shadow-2xl">
                   <img
-                    src={ABOUT_PORTRAIT_DATA_URI}
+                    src={SITE_DATA.about.portraitSrc || ABOUT_PORTRAIT_DATA_URI}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = ABOUT_PORTRAIT_DATA_URI;
+                    }}
                     alt={SITE_DATA.about.portraitAlt}
                     className="h-auto w-full object-cover"
                   />
